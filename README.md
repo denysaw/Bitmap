@@ -24,13 +24,13 @@ node bitmap.js < input > output
 [input](input) and [output](output) file examples are located in the project root folder. Input example file contains first test from the task and two bigger ones more.
 
 ## Testing the application
-For the unit-testing [jest](https://jestjs.io/) used. 
+[Jest](https://jestjs.io/) was used for the unit-testing. 
 
 Test suites are: 
 - test the input from the task example 
 - highload test (1000 x 182 x 182)
 
-To run the test simply:
+To run all tests simply:
 ```bash
 npm t
 ```
