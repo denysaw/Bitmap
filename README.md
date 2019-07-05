@@ -34,3 +34,8 @@ To run all tests simply:
 ```bash
 npm t
 ```
+
+## Author's comments about #2 revision
+A huge sorry I didn't implement any algorithm for the first time. I really thought it's just code-style test :) Really sorry.
+
+So. Now I've implemented it. First half an hour I was thinking of usage Spiral Matrix Walk algorithm from Further Maths I had for 2 years in University, but then I got, that it's easier/faster to store White pixels (1) corrdinates "indexes" into an array map. And then just walk thru them (instead of walking even spirally over a ton of zero's). Now it should work really faster. The ETA of thinking of this algo and it's implementing was about 40 mins.

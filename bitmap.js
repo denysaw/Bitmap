@@ -37,32 +37,44 @@ const iterate = (bitmap, callback) => {
   })
 }
 
-const closestWhite = (i1, j1, bit1, bitmap) => {
-  if (i1 && !j1) output()
-  if (j1) output(' ')
-
-  if (bit1) {
-    output(0)
-  } else {
-    let d = []
-
-    iterate(bitmap, (i2, j2, bit2) => {
-      if (bit2) {
-        d.push(Math.abs(i1 - i2) + Math.abs(j1 - j2))
-      }
-    })
-
-    output(Math.min(...d))
-  }
-}
-
 const output = (mixed = '\n') => {
   process.stdout.write(String(mixed))
 }
 
+const makeWhitesMap = c => {
+  let whites = []
+
+  iterate(c, (i, j, bit) => {
+    if (bit) {
+      whites.push([i, j])
+    }
+  })
+
+  return whites
+}
+
 module.exports.process = cases => {
   while (cases.length) {
-    iterate(cases.shift(), closestWhite)
+    let c = cases.shift()
+    let map = makeWhitesMap(c)
+
+    iterate(c, (i, j, bit) => {
+      if (i && !j) output()
+      if (j) output(' ')
+
+      if (bit) {
+        output(0)
+      } else {
+        let d = []
+
+        for (let white of map) {
+          d.push(Math.abs(i - white[0]) + Math.abs(j - white[1]))
+        }
+
+        output(Math.min(...d))
+      }
+    })
+
     output()
 
     if (cases.length) output()
